@@ -235,51 +235,59 @@ const campus = [
                 "grupo": "t3"
             }
         ],
-        "grupos":"trainers",
-        "trainers": [
-            {
-                "id": 1,
-                "nombre": "Johlver",
-                "ruta": "Ruta NodeJS",
-                "horario": "6am a 10am"
-            },
-            {
-                "id": 2,
-                "nombre": "Pedro",
-                "ruta": "Ruta Java",
-                "horario": "10am a 2pm"
-            },
-            {
-                "id": 3,
-                "nombre": "Miguel",
-                "ruta": "Ruta NetCore",
-                "horario": "2pm a 6pm"
-            },
-            {
-                "id": 4,
-                "nombre": "Juank",
-                "ruta": "Ruta NetCore",
-                "horario": "6pm a 10pm"
-            },
-            {
-                "id": 5,
-                "nombre": "Isa",
-                "ruta": "Ruta Java",
-                "horario": "6am a 10am"
-            },
-            {
-                "id": 6,
-                "nombre": "Yessica",
-                "ruta": "Ruta NodeJS",
-                "horario": "10am a 2pm"
-            },
-            {
-                "id": 6,
-                "nombre": "yessica",
-                "ruta": "Ruta Java",
-                "horario": "10am a 2pm"
-            }
-        ],
+    }
+]
+const trainer = [
+    {
+        "Trainer": [
+        {
+            "id": 1,
+            "nombre": "Johlver",
+            "ruta": "Ruta NodeJS",
+            "horario": "6am a 10am"
+        },
+        {
+            "id": 2,
+            "nombre": "Pedro",
+            "ruta": "Ruta Java",
+            "horario": "10am a 2pm"
+        },
+        {
+            "id": 3,
+            "nombre": "Miguel",
+            "ruta": "Ruta NetCore",
+            "horario": "2pm a 6pm"
+        },
+        {
+            "id": 4,
+            "nombre": "Juank",
+            "ruta": "Ruta NetCore",
+            "horario": "6pm a 10pm"
+        },
+        {
+            "id": 5,
+            "nombre": "Isa",
+            "ruta": "Ruta Java",
+            "horario": "6am a 10am"
+        },
+        {
+            "id": 6,
+            "nombre": "Yessica",
+            "ruta": "Ruta NodeJS",
+            "horario": "10am a 2pm"
+        },
+        {
+            "id": 6,
+            "nombre": "yessica",
+            "ruta": "Ruta Java",
+            "horario": "10am a 2pm"
+        }
+    ]
+    }
+    
+]  
+const rutita = [
+    {
         "ruta": [
             {
                 "id": 1,
@@ -304,7 +312,10 @@ const campus = [
                 "SGDB_alternativo": "JavaScript, C#",
                 "capacidad_maxima": 33
             }
-        ],
+        ]
+    }
+]
+const coordi = []
         "coordinador": [
             {
                 "nombre": "Stiven",
@@ -545,7 +556,7 @@ const campus = [
             }
         ]
     }
-]
+
 console.log(campus)
 
 console.log("-------Menú-------")
@@ -615,10 +626,10 @@ else if (opc==2){
     }
     else if (o==2){
         var idTrainer=prompt("Ingresa el id del Trainer: ")
-        for (var rutita of campus){
-            for (var trainer of rutita.campus){
-                if (trainer.id == idTrainer){
-                    console.log("Nombre:",trainer.nombre);
+        for (var grupos of trainer){
+            for (var Trainers of grupos.campus){
+                if (Trainers.id == idTrainer){
+                    console.log("Nombre:",Trainers.nombre);
                 }
             }
         }
