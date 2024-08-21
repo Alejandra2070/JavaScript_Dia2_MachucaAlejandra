@@ -618,7 +618,7 @@ else if (opc==2){
         for (var rutita of campus){
             for (var trainer of rutita.campus){
                 if (trainer.id == idTrainer){
-                    console.log("Nombre:",trainer.nombre)
+                    console.log("Nombre:",trainer.nombre);
                 }
             }
         }
