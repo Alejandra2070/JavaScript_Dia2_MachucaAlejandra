@@ -1,5 +1,6 @@
 const campus = [
     {
+        "id": "1",
         "grupo": "t1",
         "campers": [
             {
@@ -79,6 +80,7 @@ const campus = [
                 "grupo": "t1"
             }
         ],
+        "id": "2",
         "grupo":"t2",
         "campers":[
             {
@@ -157,6 +159,7 @@ const campus = [
                 "grupo": "t2"
             }
         ],
+        "id": "3",
         "grupo": "t3",
         "campers":[
             {
@@ -239,7 +242,8 @@ const campus = [
 ]
 const trainer = [
     {
-        "Trainer": [
+        "grupos": "trainer2",
+        "trainers": [
         {
             "id": 1,
             "nombre": "Johlver",
@@ -315,14 +319,19 @@ const rutita = [
         ]
     }
 ]
-const coordi = []
+const coordi = [
+    {
         "coordinador": [
             {
                 "nombre": "Stiven",
                 "apellido": "Carvajal",
                 "cargo": "Coordinador"
             }
-        ],
+        ]
+    }
+]
+const matris = [
+    {
         "matricula": [
             {
                 "camperID": 1,
@@ -345,7 +354,11 @@ const coordi = []
                 "fechaF": "19-02-2025",
                 "salon": "Salon Artemis"
             }
-        ],
+        ]
+    }
+]       
+const rutas = [
+    {
         "rutaEntrenamiento": "Ruta NodeJS",
         "trainer": "Jholver",
         "campersInscritos": [
@@ -526,22 +539,50 @@ const coordi = []
                 "estado": "Expulsado",
                 "riesgo": "Alto"
             }
-        ],
+        ]
+    }
+]
+const repo = [
+    {
         "reporte": [
             {
-                "id": 1,
-                "nombre": "Luis",
-                "apellido": "Caicedo",
-                "estado": "Aprobado"
+                "id": 2,
+                "nombre": "Jaime",
+                "apellido": "Barrera",
+                "estado": "Inscrito",
+                "riesgo": "Medio",
+                "grupo": "t1"
             },
             {
-                "id": 2,
-                "nombre": "Anne",
-                "apellido": "Ortega",
-                "estado": "Inscrito"
+                "id": 5,
+                "nombre": "Maria",
+                "apellido": "Lizarazo",
+                "estado": "Cursando",
+                "riesgo": "Medio",
+                "grupo": "t1"
+            },
+            {
+                "id": 7,
+                "nombre": "Daniel",
+                "apellido": "Mendez",
+                "estado": "En proceso de ingreso",
+                "riesgo": "Medio",
+                "grupo": "t2"
+            },
+            {
+                "id": 12,
+                "nombre": "Javier",
+                "apellido": "Viaz",
+                "estado": "En proceso de ingreso",
+                "riesgo": "Medio",
+                "grupo": "t3"
             }
-        ],
-        "estado": [
+        ]
+    }
+]
+const est = [
+    {
+        "Inscritos": [
             {
                 "id": 1,
                 "nombre": "Luis",
@@ -555,7 +596,18 @@ const coordi = []
                 "estado": "Inscrito"
             }
         ]
+    },
+    {
+        "Aprobados": [
+            {
+                "id": 4,
+                "nombre": "Jerxon",
+                "apellido": "Correa",
+                "estado": "Aprobado",
+            }
+        ]
     }
+] 
 
 console.log(campus)
 
@@ -603,8 +655,7 @@ else if (opc==2){
     console.log("-------Menú Trainers-------")
     console.log("1. Estado de los campers")
     console.log("2. Ruta de los trainers")
-    console.log("3. Reportes")
-    console.log("4. Salir del programa")
+    console.log("3. Salir del programa")
     o=prompt("Elige una de las opciones: ")
     if (o==1){
         console.log("Estos son los grupos de los campers")
@@ -613,12 +664,15 @@ else if (opc==2){
         console.log("3. Grupo t3")
         var grupito=prompt("Elige uno de los grupos para ver su estado: ")
         if (grupito==1){
-            console.log("Este es el estado de los campers del grupo t1:");
+            console.log("Este es el estado de los campers del grupo:");
             for (var grupo of campus){
                 for (var camper of grupo.campers){
-                    if (grupo.campus == grupito){
+                    if (grupo.id == grupito){
+                        console.log("-------------------------")
                         console.log("Nombre:",camper.nombre)
                         console.log("Apellido:",camper.apellido)
+                        console.log("Estado:",camper.estado)
+                        console.log("Riesgo:",camper.riesgo)
                     }
                 }
             }
@@ -626,11 +680,13 @@ else if (opc==2){
     }
     else if (o==2){
         var idTrainer=prompt("Ingresa el id del Trainer: ")
-        for (var grupos of trainer){
-            for (var Trainers of grupos.campus){
-                if (Trainers.id == idTrainer){
-                    console.log("Nombre:",Trainers.nombre);
-                }
+        for (var grupo of rutita[0]["ruta"]){
+            if (grupo.id == idTrainer){
+                console.log("ID:",grupo["id"])
+                console.log("Trainer:",grupo["trainer"])
+                console.log("Nombre:",grupo["nombre"])
+                console.log("Módulo:",grupo["modulo"])
+                console.log("Capacidad:",grupo["capacidad_maxima"])
             }
         }
         
@@ -643,7 +699,7 @@ else if (opc==3){
     console.log("3. Reporte de campers inscritos")
     console.log("4. Reporte de campers aprobados")
     console.log("5. Estado de los campers")
-    console.log("6. Ver campers con bajo rendimiento")
+    console.log("6. Reportes")
     console.log("7. Agregar rutas de entrenamiento")
     console.log("8. Asignar campers a la ruta de entrenamiento")
     p=prompt("Elige una de las opciones: ")
@@ -671,9 +727,47 @@ else if (opc==3){
             console.log("Grupo")
             c=prompt("Ingrese la opción que desea actualizar: ")
             if (c==1){
-                nuevoId=prompt("Ingrese el nueo id del camper: ")
+                nuevoId=prompt("Ingrese el nuevo id del camper: ")
                 nuevaF=prompt("Ingrese el nuevo usuario del c")
             }
         }
     }
+    if (p==3){
+        for (var ins of est[0]["Inscritos"]){
+            console.log("ID:",ins["id"])
+            console.log("Nombre:",ins["nombre"])
+            console.log("Apellido:",ins["apellido"])
+            console.log("Estado:",ins["estado"])
+        }
+    }
+    if (p==4){
+        for (var apr of est[0]["Aprobados"]){
+            console.log("ID:",ins["id"])
+            console.log("Nombre:",ins["nombre"])
+            console.log("Apellido:",ins["apellido"])
+            console.log("Estado:",ins["estado"])
+        }
+    }
+    if (p==5){
+        for (var grupo of campus){
+            for (var camper of grupo.campers){
+                console.log("-------------------------")
+                console.log("Nombre:",camper.nombre)
+                console.log("Apellido:",camper.apellido)
+                console.log("Estado:",camper.estado)
+                console.log("Riesgo:",camper.riesgo)
+            }
+        }
+    }
+    if (p==6){
+        for (var repor of repo[0][reporte]){
+            console.log("---------------")
+            console.log("ID:",repor["id"])
+            console.log("Nombre:",repor["nombre"])
+            console.log("Apellido:",repor["apellido"])
+            console.log("Estado:",repor["estado"])
+            console.log("Riesgo:",repor["riesgo"])
+            console.log("Grupo:",repor["grupo"])
+        }
+    }  
 }
